@@ -53,23 +53,26 @@ export default function Home() {
           <div>{`소지금액 : ${data.money}`}</div>
           <div>{`트레이너아이디 : ${data.trainerId}`}</div>
           <div>{`플레이시간 : ${data.timePlayed}`}</div>
-          {data.itemPocketItemList.map((i) => {
-            return (
-              <div
-                key={i.name}
-                style={{
-                  border: "1px solid black",
-                  borderRadius: "5px",
-                  margin: "4px",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                <div>이름 : {i.name}</div>
-                <div>갯수 : {i.count}</div>
-              </div>
-            );
-          })}
+          <div style={{display:'flex',flexWrap:'wrap'}}>
+            {data.itemPocketItemList.map((i) => {
+              return (
+                <div
+                  key={i.name}
+                  style={{
+                    padding:'4px',
+                    border: "1px solid black",
+                    borderRadius: "5px",
+                    margin: "4px",
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                >
+                  <div>이름 : {i.name}</div>
+                  <div>갯수 : {i.count}</div>
+                </div>
+              );
+            })}
+          </div>
         </>
       )}
     </>

@@ -1,6 +1,4 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import formidable from "formidable";
-import FormData from "form-data";
 import fs from "fs";
 import type { NextApiRequest, NextApiResponse } from "next";
 import itemListJson from "../../public/item-list.json";
@@ -40,8 +38,6 @@ export default async function handler(
       return resolve(files);
     });
   });
-
-  const formData = new FormData();
   const file = fileData.file;
   let money = "";
   let trainerId = "";
@@ -69,13 +65,11 @@ export default async function handler(
     } else {
       hex += extract;
     }
-    console.log(itemList[hex]);
     itemPocketItemList.push({
       name: itemList[hex],
       count: data[i + 1],
     });
   }
-  console.log("종료 직전");
   res.status(200).json({
     money: parseInt(money, 16),
     trainerId: parseInt(trainerId, 16),
