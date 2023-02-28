@@ -65,10 +65,11 @@ export default async function handler(
     } else {
       hex += extract;
     }
-    itemPocketItemList.push({
-      name: itemList[hex],
-      count: data[i + 1],
-    });
+    if (hex !== "0x00" && hex !== "0xFF")
+      itemPocketItemList.push({
+        name: itemList[hex],
+        count: data[i + 1],
+      });
   }
   res.status(200).json({
     money: parseInt(money, 16),
